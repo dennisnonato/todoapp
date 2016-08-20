@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="starter" ng-controller="ListaCtrl">
+
+    <ion-pane>
+      <ion-header-bar class="bar-stable">
+        <h1 class="title">TodoApp</h1>
+      </ion-header-bar>
+      <ion-content>
+         
+          <div class="list list-inset">
+  <label class="item item-input">
+    <i class="icon ion-search placeholder-icon"></i>
+    <input type="text" placeholder="Search" ng-model="filtro">
+  </label>
+</div>
+          
+          <ion-list>
+              <ion-item class="item-icon-left" ng-repeat="t in tarefas | filter:filtro"> <!--ng-hide="t.concluida"   -->
+        <!--        <i class="{{t.concluida ? 'ion-android-done-all' : 'ion-android-done'}}"></i> -->
+        <i ng-class="{&apos;icon ion-android-done-all&apos; : t.concluida, &apos;icon ion-android-done&apos; : !t.concluida}"></i>
+                 <h2> {{t.texto}}</h2>
+                 <!-- <p>{{t.concluida}}</p> -->
+                  
+                  </ion-item>
+          </ion-list>
+        
+        
+         <!--
+          {{msg}} modo de exibição
+          <span ng-bind="msg"></span>
+          -->
+          
+          
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>
